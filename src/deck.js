@@ -1,5 +1,3 @@
-const Card = require("./card");
-
 class Deck {
     constructor() {
         this.cards=[];
@@ -14,11 +12,11 @@ class Deck {
         //for i from n−1 downto 1 do
         //j ← random integer such that 0 ≤ j ≤ i
         //exchange a[j] and a[i]
-        for(let i=this.cards.length-1;i>0;i--){
-            const j = Math.floor(Math.random()*this.cards.length);
-            const aux=this.cards[i];
-            this.cards[i]=this.cards[j];
-            this.cards[j]=aux;
+        for(let i = this.cards.length - 1 ; i > 0 ; i--){
+            const j = Math.floor(Math.random() * this.cards.length);
+            const aux = this.cards[i];
+            this.cards[i] = this.cards[j];
+            this.cards[j] = aux;
         }
     }
 

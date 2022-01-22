@@ -2,12 +2,15 @@ class Player{
     constructor(name,maxCards){
         this.name = name;
         this.cards = [];
-        this.maxCards=maxCards;
+        this.maxCards = maxCards;
     }
 
     pickCard(card){
-        if(this.cards.length<this.maxCards){
+        if(this.cards.length < this.maxCards){
             this.cards.push(card);
+            return true;
+        } else {
+            return false;
         }
     }
 

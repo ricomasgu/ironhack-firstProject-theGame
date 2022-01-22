@@ -1,0 +1,16 @@
+div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+canvas{
+    background: url("../img/wood-gef4a6a32a_640.jpg");
+    margin: auto;
+}
+
+button {
+    padding: 10px 20px;
+    margin: auto;
+}
