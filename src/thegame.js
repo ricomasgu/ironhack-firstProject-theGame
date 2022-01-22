@@ -5,6 +5,7 @@ let maxCards;
 let cardClicked;
 let pileClicked;
 let gameStarted;
+let gameFinished;
 
 function restartSelected(){
     pileClicked = {pos: 0, clicked: false};
@@ -104,6 +105,10 @@ function clickDeck(event){
         console.log(game);
         game.deal();
         reDrawScenario();
+        if(game.gameOver()){
+            gameStarted = false;
+            gameFinished = true;
+        }
     }
 }
 
@@ -142,8 +147,9 @@ function clickPile(event){
 }
 
 document.getElementById("start").addEventListener("click", () => {
-    if(gameStarted){
+    if(gameStarted || gameFinished){
         game = new Game("Rick", maxCards);
+        gameFinished = false;
     }
     gameStarted = true;
     game.deal();
@@ -156,7 +162,6 @@ canvas.addEventListener("click",(event) => {
         clickCard(event);
         clickPile(event);
         if(pileClicked.clicked && cardClicked.clicked){
-            //Si dejas una carta puedes ganar, y puedes perder si no puedes robar => canDeal()
             if(game.discardCard(cardClicked.pos , pileClicked.pos)){
                 const youNotWin = !game.youWin();
                 const youWin = game.youWin();
@@ -169,9 +174,9 @@ canvas.addEventListener("click",(event) => {
                 } else {
                     youWin ? drawFinishGame(true) : drawFinishGame(false);
                     gameStarted = false;
+                    gameFinished = true;
                 }
-            }
-            //Siempre comprobar que no se puede robar antes de comprobar el gameOver     
+            }    
         }
     }
 });

@@ -50,7 +50,7 @@ class Game{
     }
 
     gameOver(){
-        if(this.canDeal()){
+        if(!this.canDeal()){
             let gameOver = true;
             this.player.cards.forEach( (card) => {
                 if (this.piles[0].canAdd(card) || this.piles[1].canAdd(card) || this.piles[2].canAdd(card) || this.piles[3].canAdd(card)) {
