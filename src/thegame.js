@@ -154,6 +154,7 @@ document.getElementById("start").addEventListener("click", () => {
     gameStarted = true;
     game.deal();
     reDrawScenario();
+    restartSelected();
 });
 
 canvas.addEventListener("click",(event) => {
